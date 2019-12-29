@@ -2,7 +2,7 @@ import {Injectable, NgZone} from '@angular/core';
 import { GoogleAuthService } from 'ng-gapi';
 import * as _ from 'lodash';
 import GoogleUser = gapi.auth2.GoogleUser;
-import GoogleAuth = gapi.auth2.GoogleAuth;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   public getToken(): string {
-    let token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
+    const token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
     if (!token) {
       throw new Error('no token set , authentication required');
     }

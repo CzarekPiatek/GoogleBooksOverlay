@@ -18,6 +18,17 @@ import {GoogleApiModule, NG_GAPI_CONFIG, NgGapiClientConfig} from 'ng-gapi';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './service/user.service';
 import {RouterModule} from '@angular/router';
+import { LogoutComponent } from './logout/logout.component';
+import {AppRoutingModule} from './app-routing.module';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CardBooksResultComponent } from './card-books-result/card-books-result.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material';
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: '295138372837-gshg3a6836h85gp0p44hd5d8natbbhlo.apps.googleusercontent.com',
@@ -36,19 +47,24 @@ const gapiClientConfig: NgGapiClientConfig = {
     AppComponent,
     NavbarComponent,
     BooksResultComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent,
+    SearchBarComponent,
+    CardBooksResultComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
-    RouterModule.forRoot([{
-      path: 'redirect',
-      component: AppComponent
-    }]),
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatListModule,
     MatTableModule,
@@ -58,6 +74,9 @@ const gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig,
     }),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
