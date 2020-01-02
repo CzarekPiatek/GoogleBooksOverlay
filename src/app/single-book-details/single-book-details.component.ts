@@ -12,6 +12,7 @@ import {map} from "rxjs/operators";
 export class SingleBookDetailsComponent implements OnInit {
   bookId;
   book;
+  authors;
   state$: Observable<object>;
 
   constructor(private route: ActivatedRoute,
@@ -26,6 +27,8 @@ export class SingleBookDetailsComponent implements OnInit {
     this.bookService.getBookId(this.bookId).subscribe(
       data => {
         this.book = data;
+        this.authors = data.volumeInfo.authors;
+        console.log(this.authors);
         console.log(data);
       });
     console.log(this.state$);

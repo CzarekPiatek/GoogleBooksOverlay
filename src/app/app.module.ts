@@ -10,7 +10,8 @@ import {
   MdcFormFieldModule, MdcIconButtonModule, MdcIconModule,
   MdcListModule,
   MdcMenuModule, MdcTabBarModule,
-  MdcTopAppBarModule, MdcTypographyModule
+  MdcTopAppBarModule, MdcTypographyModule, MdcElevationModule,
+  MDCDataTableModule, MdcTextFieldModule
 } from '@angular-mdc/web';
 import {UserService} from './service/user.service';
 import {MaterialNavbarComponent} from './material-navbar/material-navbar.component';
@@ -19,6 +20,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SingleBookDetailsComponent } from './single-book-details/single-book-details.component';
+
+
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: '295138372837-gshg3a6836h85gp0p44hd5d8natbbhlo.apps.googleusercontent.com',
@@ -60,6 +63,9 @@ const gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig,
     }),
+    MdcElevationModule,
+    MDCDataTableModule,
+    MdcTextFieldModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

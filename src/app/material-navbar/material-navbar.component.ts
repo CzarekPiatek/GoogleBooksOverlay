@@ -12,6 +12,7 @@ export class MaterialNavbarComponent implements OnInit {
     {label: 'Szukaj książek', icon: 'search', activated: true, route: 'material-card-list'},
     {label: 'Twoje książki', icon: 'star', activated: false, route: 'material-card-list'},
     {label: 'Sent Mail', icon: 'send', activated: false, route: 'material-card-list'},
+    {label: 'Twój profil', icon: 'account_box', activated: false, route: 'material-card-list'},
     {label: 'Wyloguj', icon: 'drafts', activated: false, route: 'home-page'}
   ];
 

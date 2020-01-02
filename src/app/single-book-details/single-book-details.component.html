@@ -1,14 +1,73 @@
-<div *ngIf="book">
-  <br> Id: {{book.id}}
-  <br> Etag: {{book.etag}}
-  <br> Okładka: <img src='{{book.volumeInfo.imageLinks.thumbnail}}'>
-  <br> Tytuł: {{book.volumeInfo.title}}
-  <br> Opis: {{book.volumeInfo.description}}
-  <br> Kategorie: {{book.volumeInfo.categories}}
-  <br> Autorzy: {{book.volumeInfo.authors[0]}}
-  <br> Ilość stron: {{book.volumeInfo.pageCount}}
-  <br> Wydawca: {{book.volumeInfo.publisher}}
-  <br> Data publikacji: {{book.volumeInfo.publishedDate}}
-  <br> Język książki: {{book.volumeInfo.language}}
+<div class="single-book-details" >
+  <div class="single-book-details-content"*ngIf="book">
+    <div class="single-book-details-title">
+      <h1>{{book.volumeInfo.title}}</h1>
+    </div>
+    <div class="single-book-details-headerbox">
+      <div class="single-book-details-thumbnail" [mdcElevation]="3">
+        <img *ngIf="book.volumeInfo.imageLinks" src='{{book.volumeInfo.imageLinks.thumbnail}}'>
+        <img *ngIf="!book.volumeInfo.imageLinks" src="https://material-components-web.appspot.com/images/1-1.jpg">
+      </div>
+      <div class="single-book-details-headerbox-text">
+        <div class="single-book-details-description" *ngIf="book.volumeInfo.description">
+          <h2>Opis:</h2>
+          <p [innerHTML]="book.volumeInfo.description">{{book.volumeInfo.description}}</p>
+        </div>
+        <div *ngIf="book.volumeInfo.authors" class="single-book-details-authors">
+          <h2>Autorzy:</h2>
+          <p *ngFor="let author of authors">{{author}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="single-book-details-table"[mdcElevation]="3">
+      <mdc-data-table>
+        <table mdcDataTableTable>
+          <tbody mdcDataTableContent>
+            <tr mdcDataTableRow *ngIf="book.volumeInfo.categories">
+              <td mdcDataTableCell >Kategoria:</td>
+              <td mdcDataTableCell>{{book.volumeInfo.categories}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.volumeInfo.pageCount">
+              <td mdcDataTableCell>Ilość stron:</td>
+              <td mdcDataTableCell>{{book.volumeInfo.pageCount}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.volumeInfo.publisher">
+              <td mdcDataTableCell>Wydawca:</td>
+              <td mdcDataTableCell>{{book.volumeInfo.publisher}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.volumeInfo.publishedDate">
+              <td mdcDataTableCell>Data publikacji:</td>
+              <td mdcDataTableCell>{{book.volumeInfo.publishedDate}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.volumeInfo.language">
+              <td mdcDataTableCell>Język książki:</td>
+              <td mdcDataTableCell>{{book.volumeInfo.language}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.saleInfo.isEbook">
+              <td mdcDataTableCell>Czy to E-book?:</td>
+              <td mdcDataTableCell>{{book.saleInfo.isEbook}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.saleInfo.saleability">
+              <td mdcDataTableCell>Czy jest na sprzedaż:</td>
+              <td mdcDataTableCell>{{book.saleInfo.saleability}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.saleInfo.retailPrice">
+              <td mdcDataTableCell>Cena detaliczna:</td>
+              <td mdcDataTableCell>{{book.saleInfo.retailPrice.amount}} {{book.saleInfo.retailPrice.currencyCode}}</td>
+            </tr>
+            <tr mdcDataTableRow>
+              <td mdcDataTableCell>Id:</td>
+              <td mdcDataTableCell>{{book.id}}</td>
+            </tr>
+            <tr mdcDataTableRow *ngIf="book.etag">
+              <td mdcDataTableCell>Etag:</td>
+              <td mdcDataTableCell>{{book.etag}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </mdc-data-table>
+    </div>
+  </div>
+  <pre>{{ state$ | async | json }}</pre>
 </div>
-<pre>{{ state$ | async | json }}</pre>

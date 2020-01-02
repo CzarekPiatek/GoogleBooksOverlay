@@ -54,9 +54,18 @@
   width:300px;
 }
 
-.demo-card__music-title {
+.demo-card__music-title,
+.demo-card__music-artist {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.icon-button-primary {
+  @include mdc-icon-button-ink-color($mdc-theme-primary);
+}
+.bottom-buttons {
+  clear:both;
+}
+.bottom-buttons button {
+  margin: 24px;
+}

@@ -1,6 +1,10 @@
-<div id="search">
-  <input class="form-control form-control-lg" type="text" placeholder="Book title" #searchBooks />
-  <button class="btn btn-primary" (click)="onSearch(searchBooks.value)"><i class="material-icons">
-    search
-  </i></button>
+<div class="search-form">
+  <mdc-form-field>
+    <mdc-text-field #searchBooks label="Wpisz tytuł książki" outlined required class="search-form__input" [mdcElevation]="3">
+    </mdc-text-field>
+    <button mdc-button outlined label="Szukaj" (click)="onSearch(searchBooks.value)" class="search-form__button" [mdcElevation]="3">
+      <mdc-icon>search</mdc-icon>
+    </button>
+  </mdc-form-field>
+
 </div>

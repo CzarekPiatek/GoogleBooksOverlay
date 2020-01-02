@@ -20,14 +20,12 @@
         </div>
       </mdc-top-app-bar-section>
       <mdc-top-app-bar-section align="end" *ngIf="!isLoggedIn()">
-        <button class="button-navbar" mdc-button (click)="signIn()">
-          <mdc-icon>person</mdc-icon>Zaloguj się
-        </button>
+        <mdc-icon mdcTopAppBarActionItem (click)="signIn()">account_box</mdc-icon>
       </mdc-top-app-bar-section>
     </mdc-top-app-bar-row>
   </mdc-top-app-bar>
 
-  <div class="mdc-top-app-bar--fixed-adjust" #fixedContent>
+  <div class="mdc-top-app-bar--fixed-adjust mdc-drawer-app-content" mdcTopAppBarFixedAdjust #fixedContent>
     <mdc-drawer #drawer fixed drawer="dismissible">
       <mdc-drawer-header *ngIf="isLoggedIn()" title="Drawer Title" subtitle="Subtitle"></mdc-drawer-header >
       <mdc-drawer-header *ngIf="!isLoggedIn()" title="Zaloguj się" subtitle="aby kontynuować"></mdc-drawer-header >

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BookService} from "../service/book.service";
-import {IBookResponseModel} from "../model/Book/ibook-response-model";
+import {BookService} from '../service/book.service';
+import {IBookResponseModel} from '../model/Book/ibook-response-model';
 
 @Component({
   selector: 'app-material-card-list',
@@ -9,7 +9,6 @@ import {IBookResponseModel} from "../model/Book/ibook-response-model";
 })
 export class MaterialCardListComponent {
   constructor(private bookService: BookService) {}
-  isLoading = true;
   books;
   booksData: IBookResponseModel[];
   startIndex = 0;
@@ -20,6 +19,7 @@ export class MaterialCardListComponent {
   }
 
   getTwelveBooks() {
+    if (this.startIndex < 0) { this.startIndex = 0; }
     this.bookService.getTwelveBooks(this.books, this.startIndex).subscribe(
       data => {
         this.booksData = data;

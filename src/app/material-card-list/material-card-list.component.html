@@ -1,6 +1,6 @@
 <app-search-bar (books)="startIndex = 0; getBooks($event)"></app-search-bar>
 <div *ngIf="booksData != undefined">
-<mdc-card class="demo-card demo-card--music" *ngFor="let card of booksData.items">
+<mdc-card class="demo-card demo-card--music" *ngFor="let card of booksData.items" [mdcElevation]="3">
   <mdc-card-primary-action>
     <div class="demo-card__music-row">
       <mdc-card-media [ngStyle]="{'background-image': card.volumeInfo.imageLinks ? 'url('+card.volumeInfo.imageLinks.thumbnail+')' : 'url(https://material-components-web.appspot.com/images/1-1.jpg)'}" square class="demo-card__media demo-card__media--music"></mdc-card-media>
@@ -19,7 +19,7 @@
       <a href="{{card.volumeInfo.previewLink}}"><button *ngIf="card.volumeInfo.previewLink" mdc-button mdcCardAction="button">Podgląd</button></a>
     </mdc-card-action-buttons>
     <mdc-card-action-icons>
-      <button mdcIconButton mdcCardAction="icon">
+      <button mdcIconButton class="icon-button-primary">
         <mdc-icon mdcIconOn>favorite</mdc-icon>
         <mdc-icon>favorite_border</mdc-icon>
       </button>
@@ -29,8 +29,12 @@
   </mdc-card-actions>
 </mdc-card>
 </div>
-<div style="clear:both;">
-  <button *ngIf="booksData != undefined" (click)="startIndex = startIndex - 12; getTwelveBooks()">PREV</button>
-  <button *ngIf="booksData != undefined" (click)="startIndex = startIndex + 12; getTwelveBooks()">NEXT</button>
+<div class="bottom-buttons">
+  <button *ngIf="booksData != undefined" mdc-button outlined label="Poprzednie"
+          (click)="startIndex = startIndex - 12; getTwelveBooks()" [mdcElevation]="3">
+  </button>
+  <button *ngIf="booksData != undefined" mdc-button outlined label="Następne"
+          (click)="startIndex = startIndex + 12; getTwelveBooks()" [mdcElevation]="3">
+  </button>
 </div>
 
