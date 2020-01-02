@@ -1,0 +1,56 @@
+@import "~@angular-mdc/theme/material";
+@import "~@angular-mdc/theme/material-components-web";
+
+.demo-card {
+  margin: 28px;
+}
+
+.mdc-card__media {
+  position: relative;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.demo-card__media--music {
+  width: 110px;
+  border-top-left-radius: inherit;
+}
+.demo-card--music {
+  @include mdc-card-shape-radius(24px 4px);
+
+  @include mdc-rtl {
+    @include mdc-card-shape-radius(4px 24px);
+  }
+}
+
+.demo-card__music-row {
+  display: flex;
+  border-top-left-radius: inherit;
+
+  @include mdc-rtl {
+    border-top-left-radius: 0;
+    border-top-right-radius: inherit;
+  }
+}
+
+.demo-card__media--music {
+  width: 110px;
+  border-top-left-radius: inherit;
+
+  @include mdc-rtl {
+    border-top-left-radius: 0;
+    border-top-right-radius: inherit;
+  }
+}
+
+.demo-card__music-info {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+}
+
+.demo-card__action-buttons--text-only {
+  margin-left: 8px;
+}

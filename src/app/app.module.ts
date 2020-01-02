@@ -1,34 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { BooksResultComponent } from './books-result/books-result.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import {GoogleApiModule, NG_GAPI_CONFIG, NgGapiClientConfig} from 'ng-gapi';
-import { LoginComponent } from './login/login.component';
-import { UserService } from './service/user.service';
-import {RouterModule} from '@angular/router';
-import { LogoutComponent } from './logout/logout.component';
-import {AppRoutingModule} from './app-routing.module';
+import {
+  MdcButtonModule, MdcCardModule,
+  MdcDrawerModule, MdcFabModule,
+  MdcFormFieldModule, MdcIconButtonModule, MdcIconModule,
+  MdcListModule,
+  MdcMenuModule, MdcTabBarModule,
+  MdcTopAppBarModule, MdcTypographyModule
+} from '@angular-mdc/web';
+import {UserService} from './service/user.service';
+import {MaterialNavbarComponent} from './material-navbar/material-navbar.component';
+import {MaterialCardListComponent} from './material-card-list/material-card-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CardBooksResultComponent } from './card-books-result/card-books-result.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material';
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: '295138372837-gshg3a6836h85gp0p44hd5d8natbbhlo.apps.googleusercontent.com',
@@ -41,42 +30,34 @@ const gapiClientConfig: NgGapiClientConfig = {
   ].join(' ')
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    BooksResultComponent,
-    LoginComponent,
-    LogoutComponent,
+    MaterialNavbarComponent,
+    MaterialCardListComponent,
+    HomePageComponent,
     SearchBarComponent,
-    CardBooksResultComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    MdcFabModule,
+    MdcMenuModule,
+    MdcIconModule,
+    MdcCardModule,
+    MdcDrawerModule,
+    MdcTabBarModule,
+    MdcListModule,
+    MdcButtonModule,
+    MdcFormFieldModule,
+    MdcTopAppBarModule,
+    MdcIconButtonModule,
+    HttpClientModule,
+    MdcTypographyModule,
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig,
     }),
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
