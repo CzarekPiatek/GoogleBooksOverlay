@@ -12,21 +12,18 @@ export class MaterialCardListComponent {
   isLoading = true;
   books;
   booksData: IBookResponseModel[];
+  startIndex = 0;
 
   getBooks($event) {
     this.books = $event;
-    this.isLoading = true;
-    /* this.bookService.searchBooks(this.books).subscribe(
-      data => {
-        console.log(data);
-        this.booksData = data;
-      }
-    );*/
-    this.bookService.getAllBooks(this.books).subscribe(
+    this.getTwelveBooks();
+  }
+
+  getTwelveBooks() {
+    this.bookService.getTwelveBooks(this.books, this.startIndex).subscribe(
       data => {
         this.booksData = data;
         console.log(data);
       });
-    this.isLoading = false;
   }
 }

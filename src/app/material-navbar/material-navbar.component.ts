@@ -9,22 +9,10 @@ import {Router} from '@angular/router';
 })
 export class MaterialNavbarComponent implements OnInit {
   destinations = [
-    {label: 'Inbox', icon: 'inbox', activated: true, route: 'material-card-list'},
+    {label: 'Szukaj książek', icon: 'search', activated: true, route: 'material-card-list'},
     {label: 'Twoje książki', icon: 'star', activated: false, route: 'material-card-list'},
     {label: 'Sent Mail', icon: 'send', activated: false, route: 'material-card-list'},
     {label: 'Wyloguj', icon: 'drafts', activated: false, route: 'home-page'}
-  ];
-  tabs = [
-    { label: 'Flights', icon: 'airplanemode_active' },
-    { label: 'Hotel', icon: 'hotel' },
-    { label: 'Favorites', icon: 'favorite' }
-  ];
-
-  links = [
-    { label: 'Inbox', icon: 'inbox' },
-    { label: 'Star', icon: 'star' },
-    { label: 'Sent Mail', icon: 'send' },
-    { label: 'Drafts', icon: 'drafts' }
   ];
 
   constructor(private userService: UserService, private router: Router) {
@@ -37,6 +25,9 @@ export class MaterialNavbarComponent implements OnInit {
     return this.userService.isUserSignedIn();
   }
 
+  public getUserInfo() {
+    this.userService.getCurrentUser();
+  }
   public signIn() {
     this.userService.signIn();
   }

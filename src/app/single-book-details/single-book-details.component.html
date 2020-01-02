@@ -1,0 +1,14 @@
+<div *ngIf="book">
+  <br> Id: {{book.id}}
+  <br> Etag: {{book.etag}}
+  <br> Okładka: <img src='{{book.volumeInfo.imageLinks.thumbnail}}'>
+  <br> Tytuł: {{book.volumeInfo.title}}
+  <br> Opis: {{book.volumeInfo.description}}
+  <br> Kategorie: {{book.volumeInfo.categories}}
+  <br> Autorzy: {{book.volumeInfo.authors[0]}}
+  <br> Ilość stron: {{book.volumeInfo.pageCount}}
+  <br> Wydawca: {{book.volumeInfo.publisher}}
+  <br> Data publikacji: {{book.volumeInfo.publishedDate}}
+  <br> Język książki: {{book.volumeInfo.language}}
+</div>
+<pre>{{ state$ | async | json }}</pre>

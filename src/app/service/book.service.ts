@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IBookResponseModel} from '../model/Book/ibook-response-model';
+import {IBookModel} from "../model/Book/ibook-model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,12 @@ export class BookService {
       );
   }
 
-  getAllBooks(title: string): Observable<IBookResponseModel[]> {
-    return this.http.get<IBookResponseModel[]>('https://www.googleapis.com/books/v1/volumes?q=' + title + '&maxResults=20');
+  getBookId(bookId: string): Observable<IBookModel> {
+    return this.http.get<IBookModel>('https://www.googleapis.com/books/v1/volumes/' + bookId);
+  }
+
+  getTwelveBooks(title: string, start: number): Observable<IBookResponseModel[]> {
+    return this.http.get<IBookResponseModel[]>('https://www.googleapis.com/books/v1/volumes?q=' + title +
+      '&startIndex=' + start + '&maxResults=12');
   }
 }

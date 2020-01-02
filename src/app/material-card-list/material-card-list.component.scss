@@ -3,6 +3,8 @@
 
 .demo-card {
   margin: 28px;
+  width: 450px;
+  float: left;
 }
 
 .mdc-card__media {
@@ -14,7 +16,7 @@
 }
 
 .demo-card__media--music {
-  width: 110px;
+  width: 150px;
   border-top-left-radius: inherit;
 }
 .demo-card--music {
@@ -49,8 +51,12 @@
   display: flex;
   flex-direction: column;
   padding: 8px 16px;
+  width:300px;
 }
 
-.demo-card__action-buttons--text-only {
-  margin-left: 8px;
+.demo-card__music-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+

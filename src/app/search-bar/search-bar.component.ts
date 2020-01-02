@@ -9,7 +9,7 @@ import {BookService} from '../service/book.service';
 export class SearchBarComponent implements OnInit {
   @Output() books = new EventEmitter();
 
-  constructor(private bookService: BookService) {
+  constructor() {
   }
 
   ngOnInit() {
