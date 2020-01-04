@@ -7,7 +7,7 @@
         </button>
       </mdc-top-app-bar-section>
       <mdc-top-app-bar-section align="end" *ngIf="isLoggedIn()">
-        <mdc-icon mdcTopAppBarActionItem>search</mdc-icon>
+        <mdc-icon mdcTopAppBarActionItem [routerLink]="['/material-card-list']">search</mdc-icon>
         <mdc-icon mdcTopAppBarActionItem (click)="profileMenu.open = !profileMenu.open">more_vert</mdc-icon>
         <div mdcMenuSurfaceAnchor #menuAnchor>
           <mdc-menu #profileMenu [anchorElement]="menuAnchor">
@@ -20,7 +20,7 @@
         </div>
       </mdc-top-app-bar-section>
       <mdc-top-app-bar-section align="end" *ngIf="!isLoggedIn()">
-        <mdc-icon mdcTopAppBarActionItem (click)="signIn()">account_box</mdc-icon>
+        <mdc-icon mdcTopAppBarActionItem (click)="signIn()">person</mdc-icon>
       </mdc-top-app-bar-section>
     </mdc-top-app-bar-row>
   </mdc-top-app-bar>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent  {
-  constructor() {}
+  constructor(private userService: UserService) {}
+
+  public isLoggedIn(): boolean {
+    return this.userService.isUserSignedIn();
+  }
 }

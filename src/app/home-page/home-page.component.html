@@ -1,1 +1,17 @@
-Witam na stronie, aby kontynować zaloguj się
+<div class="home-page">
+  <div class="home-page-content">
+    <div class="home-page-content__logo">
+      <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+    </div>
+    <div class="home-page-content__title">
+      <h1>Books Api Overlay</h1>
+    </div>
+    <div class="home-page-content__subtitle">
+      <h2>Cezary Piątek</h2>
+    </div>
+    <div class="home-page-content__login" *ngIf="!isLoggedIn()">
+      <h3>Aby kontynuować kliknij przycisk <mdc-icon>person</mdc-icon> (zaloguj się).</h3>
+      <h3></h3>
+    </div>
+  </div>
+</div>

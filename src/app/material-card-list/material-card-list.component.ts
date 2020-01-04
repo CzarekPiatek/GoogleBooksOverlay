@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from '../service/book.service';
 import {IBookResponseModel} from '../model/Book/ibook-response-model';
+import {BookshelfService} from '../service/bookshelf.service';
 
 @Component({
   selector: 'app-material-card-list',
@@ -8,8 +9,9 @@ import {IBookResponseModel} from '../model/Book/ibook-response-model';
   styleUrls: ['./material-card-list.component.scss']
 })
 export class MaterialCardListComponent {
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private bookshelfService: BookshelfService) {}
   books;
+  booksInFavoriteBookshelfIds = 'not null :)';
   booksData: IBookResponseModel[];
   startIndex = 0;
 
@@ -20,6 +22,10 @@ export class MaterialCardListComponent {
 
   getTwelveBooks() {
     if (this.startIndex < 0) { this.startIndex = 0; }
+    this.bookshelfService.getIdsFromMyBookshelf().subscribe(
+      data => {
+        if (data !== undefined) { this.booksInFavoriteBookshelfIds = data; }
+      });
     this.bookService.getTwelveBooks(this.books, this.startIndex).subscribe(
       data => {
         this.booksData = data;

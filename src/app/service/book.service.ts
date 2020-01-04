@@ -23,11 +23,16 @@ export class BookService {
   }
 
   getBookId(bookId: string): Observable<IBookModel> {
-    return this.http.get<IBookModel>('https://www.googleapis.com/books/v1/volumes/' + bookId);
+    return this.http.get<IBookModel>('https://www.googleapis.com/books/v1/volumes/' + bookId).pipe
+    (map((data) => {
+      return data;
+    }));
   }
 
   getTwelveBooks(title: string, start: number): Observable<IBookResponseModel[]> {
     return this.http.get<IBookResponseModel[]>('https://www.googleapis.com/books/v1/volumes?q=' + title +
-      '&startIndex=' + start + '&maxResults=12');
+      '&startIndex=' + start + '&maxResults=12').pipe(map((data) => {
+      return data;
+    }));
   }
 }

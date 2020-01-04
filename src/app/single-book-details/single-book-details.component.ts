@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../service/book.service';
+import {Location} from '@angular/common';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
@@ -13,24 +14,18 @@ export class SingleBookDetailsComponent implements OnInit {
   bookId;
   book;
   authors;
-  state$: Observable<object>;
 
   constructor(private route: ActivatedRoute,
-              private bookService: BookService) { }
-
+              private bookService: BookService,
+              private location: Location) { }
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.bookId = params.get('bookId');
     });
-    this.state$ = this.route.paramMap
-      .pipe(map(() => window.history.state));
     this.bookService.getBookId(this.bookId).subscribe(
       data => {
         this.book = data;
         this.authors = data.volumeInfo.authors;
-        console.log(this.authors);
-        console.log(data);
       });
-    console.log(this.state$);
   }
 }

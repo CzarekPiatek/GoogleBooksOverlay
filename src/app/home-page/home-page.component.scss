@@ -1,0 +1,32 @@
+.home-page {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+.home-page-content__logo{
+  margin-top: 48px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 272px;
+}
+.home-page-content__title {
+  text-align: center;
+  h1 {
+    font-size: 1em;
+  }
+}
+.home-page-content__subtitle {
+  text-align: center;
+  line-height: 1.25;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid
+  rgba(0, 0, 0, 0.15);
+  h2 {
+    font-size: 0.9em;
+    color: #3b3b3b;
+  }
+}
+.home-page-content__login {
+  text-align: center
+}

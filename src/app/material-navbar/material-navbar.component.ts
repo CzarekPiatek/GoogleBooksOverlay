@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {BookshelfService} from "../service/bookshelf.service";
 
 @Component({
   selector: 'app-material-navbar',
@@ -31,9 +32,12 @@ export class MaterialNavbarComponent implements OnInit {
   }
   public signIn() {
     this.userService.signIn();
+    if (this.isLoggedIn()) {
+      this.router.navigate(['home-page']);
+    }
   }
-
   public logOut() {
     this.userService.signOut();
+    this.router.navigate(['home-page']);
   }
 }

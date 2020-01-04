@@ -20,6 +20,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SingleBookDetailsComponent } from './single-book-details/single-book-details.component';
+import { MaterialCardComponent } from './material-card/material-card.component';
 
 
 
@@ -42,6 +43,7 @@ const gapiClientConfig: NgGapiClientConfig = {
     HomePageComponent,
     SearchBarComponent,
     SingleBookDetailsComponent,
+    MaterialCardComponent,
   ],
   imports: [
     BrowserModule,
