@@ -1,6 +1,6 @@
 export interface IBookshelf {
   kind: string;
-  id: string;
+  id: number;
   selfLink: string;
   title: string;
   access: string;

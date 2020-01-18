@@ -11,12 +11,11 @@ import {BookshelfService} from "../service/bookshelf.service";
 export class MaterialNavbarComponent implements OnInit {
   destinations = [
     {label: 'Szukaj książek', icon: 'search', activated: true, route: 'material-card-list'},
-    {label: 'Twoje książki', icon: 'star', activated: false, route: 'material-card-list'},
-    {label: 'Sent Mail', icon: 'send', activated: false, route: 'material-card-list'},
-    {label: 'Twój profil', icon: 'account_box', activated: false, route: 'material-card-list'},
+    {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'},
     {label: 'Wyloguj', icon: 'drafts', activated: false, route: 'home-page'}
   ];
-
+  username;
+  email;
   constructor(private userService: UserService, private router: Router) {
   }
 
@@ -24,12 +23,15 @@ export class MaterialNavbarComponent implements OnInit {
   }
 
   public isLoggedIn(): boolean {
-    return this.userService.isUserSignedIn();
+    if (this.userService.isUserSignedIn()) {
+      this.username = sessionStorage.getItem('username');
+      this.email = sessionStorage.getItem('email');
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  public getUserInfo() {
-    this.userService.getCurrentUser();
-  }
   public signIn() {
     this.userService.signIn();
     if (this.isLoggedIn()) {

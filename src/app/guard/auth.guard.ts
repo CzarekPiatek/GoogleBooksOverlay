@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): boolean {
+    console.log(sessionStorage.getItem('username'));
     if (!this.userService.isUserSignedIn() ) {
       this.router.navigate(['home-page']);
       return false;

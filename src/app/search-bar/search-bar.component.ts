@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {BookService} from '../service/book.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,15 +6,22 @@ import {BookService} from '../service/book.service';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-  @Output() books = new EventEmitter();
-
+  isAdvanced = false;
+  title;
+  @Output() basicSearchBooksTitle = new EventEmitter();
+  @Output() advancedSearchBooksValues = new EventEmitter();
   constructor() {
   }
 
   ngOnInit() {
   }
-
-  onSearch(value: string) {
-    this.books.emit(value);
+  advancedSearch(isAdvanced: boolean) {
+    this.isAdvanced = isAdvanced;
+  }
+  getAdvancedSearchBooksValues($event) {
+    this.advancedSearchBooksValues.emit($event);
+  }
+  getBasicSearchTitle($event) {
+    this.basicSearchBooksTitle.emit($event);
   }
 }

@@ -1,0 +1,19 @@
+<mdc-dialog>
+  <mdc-dialog-container>
+    <mdc-dialog-surface>
+      <mdc-dialog-title>{{data.title}}</mdc-dialog-title>
+      <mdc-dialog-content>
+        <mdc-list avatar *ngIf="data.addFunction">
+          <mdc-list-item [hidden]="d.isInBookshelf" (click)="closeDialog(d.bookshelfId)" *ngFor="let d of data.allBookshelvesWithBooks">
+            <mdc-icon mdcListItemGraphic>folder</mdc-icon>{{d.bookshelfTitle}}
+          </mdc-list-item>
+        </mdc-list>
+        <mdc-list avatar *ngIf="!data.addFunction">
+          <mdc-list-item [hidden]="!d.isInBookshelf" (click)="closeDialog(d.bookshelfId)" *ngFor="let d of data.allBookshelvesWithBooks">
+            <mdc-icon mdcListItemGraphic>folder</mdc-icon>{{d.bookshelfTitle}}
+          </mdc-list-item>
+        </mdc-list>
+      </mdc-dialog-content>
+    </mdc-dialog-surface>
+  </mdc-dialog-container>
+</mdc-dialog>

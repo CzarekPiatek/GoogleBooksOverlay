@@ -27,7 +27,7 @@
 
   <div class="mdc-top-app-bar--fixed-adjust mdc-drawer-app-content" mdcTopAppBarFixedAdjust #fixedContent>
     <mdc-drawer #drawer fixed drawer="dismissible">
-      <mdc-drawer-header *ngIf="isLoggedIn()" title="Drawer Title" subtitle="Subtitle"></mdc-drawer-header >
+      <mdc-drawer-header *ngIf="isLoggedIn()" title="{{username}}" subtitle="{{email}}"></mdc-drawer-header >
       <mdc-drawer-header *ngIf="!isLoggedIn()" title="Zaloguj się" subtitle="aby kontynuować"></mdc-drawer-header >
       <mdc-drawer-content>
         <mdc-list *ngIf="isLoggedIn()">

@@ -14,10 +14,10 @@
     <mdc-card-action-buttons>
       <button mdc-button mdcCardAction="button"  [routerLink]="['/single-book-details', card.id]">Szczegóły</button>
       <button *ngIf="card.volumeInfo.previewLink" mdc-button mdcCardAction="button" (click)="toPreview(card.volumeInfo.previewLink)">Podgląd</button>
-      
+
     </mdc-card-action-buttons>
     <mdc-card-action-icons>
-      <button mdcIconButton mdcCardAction="icon" icon="favorite" class="icon-button-primary" style="color:#de442c;" *ngIf="isFavorited;"></button>
+      <button mdcIconButton mdcCardAction="icon" icon="favorite" class="icon-button-primary" style="color:#de442c;" title="Dodano do zakładki Favorites" *ngIf="isFavorited;"></button>
       <button mdcIconButton mdcCardAction="icon" icon="favorite_border" class="icon-button-primary" *ngIf="!isFavorited;"></button>
     </mdc-card-action-icons>
   </mdc-card-actions>

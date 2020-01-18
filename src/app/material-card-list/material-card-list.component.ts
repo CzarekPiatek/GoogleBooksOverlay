@@ -10,23 +10,52 @@ import {BookshelfService} from '../service/bookshelf.service';
 })
 export class MaterialCardListComponent {
   constructor(private bookService: BookService, private bookshelfService: BookshelfService) {}
-  books;
-  booksInFavoriteBookshelfIds = 'not null :)';
+  basicSearchBooksTitle;
+  advancedSearchBooksValues;
+  booksInFavoriteBookshelfIds = 'brak szelfów';
   booksData: IBookResponseModel[];
   startIndex = 0;
 
   getBooks($event) {
-    this.books = $event;
-    this.getTwelveBooks();
+    this.basicSearchBooksTitle = $event;
+    this.getFromBasicSearchTwelveBooks();
   }
-
-  getTwelveBooks() {
+  getAdvancedSearchBooksValues($event) {
+    this.advancedSearchBooksValues = $event;
+    this.getFromAdvancedSearchTwelveBooks();
+  }
+  checkFavorites() {
+    console.log(this.basicSearchBooksTitle);
+    console.log(this.startIndex);
     if (this.startIndex < 0) { this.startIndex = 0; }
-    this.bookshelfService.getIdsFromMyBookshelf().subscribe(
+    this.bookshelfService.getBooksFromMyBookshelf(0).subscribe(
       data => {
-        if (data !== undefined) { this.booksInFavoriteBookshelfIds = data; }
+        if (data) { this.booksInFavoriteBookshelfIds = data; } else {
+          this.booksInFavoriteBookshelfIds = 'brak ksiazek';
+        }
       });
-    this.bookService.getTwelveBooks(this.books, this.startIndex).subscribe(
+  }
+  getFromBasicSearchTwelveBooks() {
+    this.checkFavorites();
+    this.bookService.getBasicSearchTwelveBooks(this.basicSearchBooksTitle, this.startIndex).subscribe(
+      data => {
+        this.booksData = data;
+        console.log(data);
+      });
+  }
+  getFromAdvancedSearchTwelveBooks() {
+    this.checkFavorites();
+    console.log(this.advancedSearchBooksValues);
+    this.bookService.getAdvancedSearchTwelveBooks(
+      this.advancedSearchBooksValues.firstFormGroup.title,
+      this.startIndex,
+      this.advancedSearchBooksValues.firstFormGroup.filter,
+      this.advancedSearchBooksValues.firstFormGroup.langRestrict,
+      this.advancedSearchBooksValues.secondFormGroup.maxAllowedMaturityRating,
+      this.advancedSearchBooksValues.firstFormGroup.orderBy,
+      this.advancedSearchBooksValues.secondFormGroup.printType,
+      this.advancedSearchBooksValues.secondFormGroup.projection
+    ).subscribe(
       data => {
         this.booksData = data;
         console.log(data);

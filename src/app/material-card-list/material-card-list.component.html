@@ -1,13 +1,24 @@
-<app-search-bar (books)="startIndex = 0; getBooks($event)"></app-search-bar>
+<app-search-bar
+  (basicSearchBooksTitle)="startIndex = 0; getBooks($event);"
+  (advancedSearchBooksValues)="startIndex = 0; getAdvancedSearchBooksValues($event)">
+</app-search-bar>
 <div *ngIf="booksData != undefined">
   <app-material-card *ngFor="let card of booksData.items" [booksInFavoriteBookshelfIds]="booksInFavoriteBookshelfIds" [card]=card></app-material-card>
 </div>
-<div class="bottom-buttons">
+<div class="bottom-buttons" *ngIf="advancedSearchBooksValues">
   <button *ngIf="booksData != undefined" mdc-button outlined label="Poprzednie"
-          (click)="startIndex = startIndex - 12; getTwelveBooks()" [mdcElevation]="3">
+          (click)="startIndex = startIndex - 12; getFromAdvancedSearchTwelveBooks()" [mdcElevation]="3">
   </button>
   <button *ngIf="booksData != undefined" mdc-button outlined label="Następne"
-          (click)="startIndex = startIndex + 12; getTwelveBooks()" [mdcElevation]="3">
+          (click)="startIndex = startIndex + 12; getFromAdvancedSearchTwelveBooks()" [mdcElevation]="3">
   </button>
 </div>
 
+<div class="bottom-buttons" *ngIf="basicSearchBooksTitle">
+  <button *ngIf="booksData != undefined" mdc-button outlined label="Poprzednie"
+          (click)="startIndex = startIndex - 12; getFromBasicSearchTwelveBooks()" [mdcElevation]="3">
+  </button>
+  <button *ngIf="booksData != undefined" mdc-button outlined label="Następne"
+          (click)="startIndex = startIndex + 12; getFromBasicSearchTwelveBooks()" [mdcElevation]="3">
+  </button>
+</div>

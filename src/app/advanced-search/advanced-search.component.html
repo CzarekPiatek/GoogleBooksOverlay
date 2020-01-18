@@ -1,0 +1,80 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Wypełnij wszystkie pola!">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Krok pierwszy</ng-template>
+      <mat-form-field>
+         <input matInput placeholder="Nazwa ksiązki:" formControlName="title" required>
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>Sortuj wg:</mat-label>
+      <mat-select matNativeControl formControlName="orderBy">
+        <mat-option *ngFor="let order of orderBy | keyvalue" [value]="order.key">
+          {{order.value}}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Język ksiązki</mat-label>
+        <mat-select matNativeControl formControlName="langRestrict">
+          <mat-option [value]="">Wszystkie</mat-option>
+          <mat-option *ngFor="let lang of langRestrict | keyvalue" [value]="lang.key">
+            {{lang.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ilość tekstu</mat-label>
+        <mat-select matNativeControl formControlName="filter">
+          <mat-option *ngFor="let filter of filter | keyvalue" [value]="filter.key">
+            {{filter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Dalej</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Wypełnij wszystkie pola!">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Krok drugi</ng-template>
+      <mat-form-field>
+        <mat-label>Dla kogo:</mat-label>
+        <mat-select matNativeControl formControlName="maxAllowedMaturityRating">
+          <mat-option *ngFor="let maxAllowedMaturityRating of maxAllowedMaturityRating | keyvalue" [value]="maxAllowedMaturityRating.key">
+            {{maxAllowedMaturityRating.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Typ wydania:</mat-label>
+        <mat-select matNativeControl formControlName="printType">
+          <mat-option *ngFor="let printType of printType | keyvalue" [value]="printType.key">
+            {{printType.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ilość tekstu</mat-label>
+        <mat-select matNativeControl formControlName="projection">
+          <mat-option *ngFor="let projection of projection | keyvalue" [value]="projection.key">
+            {{projection.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Cofnij</button>
+        <button mat-button matStepperNext>Dalej</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+      Aby wyszukać kliknij "Wyślij", aby wyczyścić komórki kliknij resetuj.
+    <div>
+      <button mat-button matStepperPrevious>Cofnij</button>
+      <button mat-button (click)="stepper.reset()">Resetuj</button>
+      <button mat-button (click)="send()">Wyślij</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

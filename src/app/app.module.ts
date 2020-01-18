@@ -11,7 +11,7 @@ import {
   MdcListModule,
   MdcMenuModule, MdcTabBarModule,
   MdcTopAppBarModule, MdcTypographyModule, MdcElevationModule,
-  MDCDataTableModule, MdcTextFieldModule
+  MDCDataTableModule, MdcTextFieldModule, MdcDialogModule, MdcSnackbarModule,
 } from '@angular-mdc/web';
 import {UserService} from './service/user.service';
 import {MaterialNavbarComponent} from './material-navbar/material-navbar.component';
@@ -21,6 +21,21 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SingleBookDetailsComponent } from './single-book-details/single-book-details.component';
 import { MaterialCardComponent } from './material-card/material-card.component';
+import { BookshelfListComponent } from './bookshelf-list/bookshelf-list.component';
+import { BookshelfCardListComponent } from './bookshelf-card-list/bookshelf-card-list.component';
+import { AddBookToBookshelfButtonComponent } from './add-book-to-bookshelf-button/add-book-to-bookshelf-button.component';
+import { MaterialDialogSimpleComponent } from './material-dialog-simple/material-dialog-simple.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import { BasicSearchComponent } from './basic-search/basic-search.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+
 
 
 
@@ -44,6 +59,15 @@ const gapiClientConfig: NgGapiClientConfig = {
     SearchBarComponent,
     SingleBookDetailsComponent,
     MaterialCardComponent,
+    BookshelfListComponent,
+    BookshelfCardListComponent,
+    AddBookToBookshelfButtonComponent,
+    MaterialDialogSimpleComponent,
+    AdvancedSearchComponent,
+    BasicSearchComponent,
+  ],
+  entryComponents: [
+    MaterialDialogSimpleComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +84,7 @@ const gapiClientConfig: NgGapiClientConfig = {
     MdcTopAppBarModule,
     MdcIconButtonModule,
     HttpClientModule,
+    MdcSnackbarModule,
     MdcTypographyModule,
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
@@ -68,6 +93,15 @@ const gapiClientConfig: NgGapiClientConfig = {
     MdcElevationModule,
     MDCDataTableModule,
     MdcTextFieldModule,
+    MdcDialogModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -2,12 +2,16 @@ import {Injectable, NgZone} from '@angular/core';
 import { GoogleAuthService } from 'ng-gapi';
 import * as _ from 'lodash';
 import GoogleUser = gapi.auth2.GoogleUser;
+import GoogleAuth = gapi.auth2.GoogleAuth;
+import {pipe} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public static SESSION_STORAGE_KEY: string = 'accessToken';
+  public static SESSION_STORAGE_KEY = 'accessToken';
+  public static USERNAME = 'username';
+  public static EMAIL = 'email';
   private user: GoogleUser;
 
   constructor(private googleAuthService: GoogleAuthService,
@@ -21,7 +25,6 @@ export class UserService {
   public getCurrentUser(): GoogleUser {
     return this.user;
   }
-
   public getToken(): string {
     const token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
     if (!token) {
@@ -43,10 +46,22 @@ export class UserService {
       } catch (e) {
         console.error(e);
       }
-      sessionStorage.removeItem(UserService.SESSION_STORAGE_KEY)
+      sessionStorage.removeItem(UserService.SESSION_STORAGE_KEY);
     });
   }
 
+  public refreshToken() {
+    return new Promise((resolve, reject) => {
+      this.googleAuthService.getAuth().subscribe((auth) => {
+        const currUser = auth.currentUser.get();
+        currUser.reloadAuthResponse().then((resp) => {
+          resolve(resp.access_token);
+        }, (err) => {
+          reject(err);
+        });
+      }, (err) => reject(err));
+    });
+  }
   public isUserSignedIn(): boolean {
     return !_.isEmpty(sessionStorage.getItem(UserService.SESSION_STORAGE_KEY));
   }
@@ -54,6 +69,12 @@ export class UserService {
   private signInSuccessHandler(res: GoogleUser) {
     this.ngZone.run(() => {
       this.user = res;
+      sessionStorage.setItem(
+        UserService.USERNAME, res.getBasicProfile().getName()
+      );
+      sessionStorage.setItem(
+        UserService.EMAIL, res.getBasicProfile().getEmail()
+      );
       sessionStorage.setItem(
         UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token
       );

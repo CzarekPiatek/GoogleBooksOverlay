@@ -1,10 +1,12 @@
 <div class="search-form">
-  <mdc-form-field>
-    <mdc-text-field #searchBooks label="Wpisz tytuł książki" outlined required class="search-form__input" [mdcElevation]="3">
-    </mdc-text-field>
-    <button mdc-button outlined label="Szukaj" (click)="onSearch(searchBooks.value)" class="search-form__button" [mdcElevation]="3">
+    <button mdc-button outlined label="Wyszukiwanie podstawowe"  (click)="advancedSearch(false)" class="search-form__button" [mdcElevation]="3">
       <mdc-icon>search</mdc-icon>
     </button>
-  </mdc-form-field>
-
+    <button mdc-button outlined label="Wyszukiwanie zaawansowane" (click)="advancedSearch(true)" class="search-form__button" [mdcElevation]="3">
+      <mdc-icon>search</mdc-icon>
+    </button>
+    <div class="container">
+      <app-advanced-search (booksValues)="getAdvancedSearchBooksValues($event)" *ngIf="isAdvanced"></app-advanced-search>
+      <app-basic-search (booksTitle)="getBasicSearchTitle($event)" *ngIf="!isAdvanced"></app-basic-search>
+    </div>
 </div>
