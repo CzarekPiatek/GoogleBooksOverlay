@@ -1,0 +1,26 @@
+.search-for-books__container {
+  justify-content: center;
+}
+
+.search-for-books__title {
+  text-align: center;
+}
+
+.search-for-books__search-bar {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.search-for-books__single-card {
+  float: left;
+}
+
+.search-for-books__bottom-buttons {
+  clear: both;
+}
+
+.search-for-books__bottom-buttons button {
+  margin: 15px;
+  text-align: center;
+}

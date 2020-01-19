@@ -15,16 +15,16 @@ import {
 } from '@angular-mdc/web';
 import {UserService} from './service/user.service';
 import {MaterialNavbarComponent} from './material-navbar/material-navbar.component';
-import {MaterialCardListComponent} from './material-card-list/material-card-list.component';
+import {SearchForBooksComponent} from './search-for-books/search-for-books.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SingleBookDetailsComponent } from './single-book-details/single-book-details.component';
-import { MaterialCardComponent } from './material-card/material-card.component';
+import { SearchForBooksSingleCardComponent } from './search-for-books-single-card/search-for-books-single-card.component';
 import { BookshelfListComponent } from './bookshelf-list/bookshelf-list.component';
 import { BookshelfCardListComponent } from './bookshelf-card-list/bookshelf-card-list.component';
-import { AddBookToBookshelfButtonComponent } from './add-book-to-bookshelf-button/add-book-to-bookshelf-button.component';
-import { MaterialDialogSimpleComponent } from './material-dialog-simple/material-dialog-simple.component';
+import { SingleBookDetailsBookshelfButtonsComponent } from './single-book-details-bookshelf-buttons/single-book-details-bookshelf-buttons.component';
+import { SingleBookDetailsBookshelfDialogComponent } from './single-book-details-bookshelf-dialog/single-book-details-bookshelf-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import {MatStepperModule} from "@angular/material/stepper";
@@ -57,15 +57,15 @@ const gapiClientConfig: NgGapiClientConfig = {
   declarations: [
     AppComponent,
     MaterialNavbarComponent,
-    MaterialCardListComponent,
+    SearchForBooksComponent,
     HomePageComponent,
     SearchBarComponent,
     SingleBookDetailsComponent,
-    MaterialCardComponent,
+    SearchForBooksSingleCardComponent,
     BookshelfListComponent,
     BookshelfCardListComponent,
-    AddBookToBookshelfButtonComponent,
-    MaterialDialogSimpleComponent,
+    SingleBookDetailsBookshelfButtonsComponent,
+    SingleBookDetailsBookshelfDialogComponent,
     AdvancedSearchComponent,
     BasicSearchComponent,
     CompareBookshelvesComponent,
@@ -73,7 +73,7 @@ const gapiClientConfig: NgGapiClientConfig = {
     CompareBookshelvesTableComponent,
   ],
   entryComponents: [
-    MaterialDialogSimpleComponent,
+    SingleBookDetailsBookshelfDialogComponent,
   ],
   imports: [
     BrowserModule,

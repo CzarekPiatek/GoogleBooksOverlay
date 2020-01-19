@@ -1,13 +1,10 @@
-.search-form {
-  margin: 25px 25px 0 25px;
+.search-bar__buttons {
+  text-align: center;
 }
-.search-form__input{
-  width: 450px;
+.search-bar__buttons button {
+  margin: 15px;
 }
-
-.search-form__button {
-  margin-left: 54px;
-  height: 56px;
+.search-bar__search-inputs {
+  margin: 15px;
+  text-align: center;
 }
-
-

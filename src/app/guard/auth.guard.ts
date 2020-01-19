@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     console.log(sessionStorage.getItem('username'));
-    if (!this.userService.isUserSignedIn() ) {
+    if (!this.userService.isUserSignedIn()) {
       this.router.navigate(['home-page']);
       return false;
     }

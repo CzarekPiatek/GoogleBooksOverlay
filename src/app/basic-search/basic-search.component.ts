@@ -7,11 +7,16 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class BasicSearchComponent implements OnInit {
   @Output() booksTitle = new EventEmitter();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-  onSearch(booksTitle: string) {
-    this.booksTitle.emit(booksTitle);
+
+  search(booksTitle: string) {
+    if (booksTitle !== undefined) {
+      this.booksTitle.emit(booksTitle);
+    }
   }
 }

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookService} from '../service/book.service';
 import {IBookResponseModel} from '../model/Book/ibook-response-model';
 import {BookshelfService} from '../service/bookshelf.service';
 
 @Component({
-  selector: 'app-material-card-list',
-  templateUrl: './material-card-list.component.html',
-  styleUrls: ['./material-card-list.component.scss']
+  selector: 'app-search-for-books',
+  templateUrl: './search-for-books.component.html',
+  styleUrls: ['./search-for-books.component.scss']
 })
-export class MaterialCardListComponent {
-  constructor(private bookService: BookService, private bookshelfService: BookshelfService) {}
+export class SearchForBooksComponent {
+  constructor(private bookService: BookService, private bookshelfService: BookshelfService) {
+  }
+
   basicSearchBooksTitle;
   advancedSearchBooksValues;
   booksInFavoriteBookshelfIds = 'brak szelfów';
@@ -20,21 +22,28 @@ export class MaterialCardListComponent {
     this.basicSearchBooksTitle = $event;
     this.getFromBasicSearchTwelveBooks();
   }
+
   getAdvancedSearchBooksValues($event) {
     this.advancedSearchBooksValues = $event;
     this.getFromAdvancedSearchTwelveBooks();
   }
+
   checkFavorites() {
     console.log(this.basicSearchBooksTitle);
     console.log(this.startIndex);
-    if (this.startIndex < 0) { this.startIndex = 0; }
+    if (this.startIndex < 0) {
+      this.startIndex = 0;
+    }
     this.bookshelfService.getBooksFromMyBookshelf(0).subscribe(
       data => {
-        if (data) { this.booksInFavoriteBookshelfIds = data; } else {
+        if (data) {
+          this.booksInFavoriteBookshelfIds = data;
+        } else {
           this.booksInFavoriteBookshelfIds = 'brak ksiazek';
         }
       });
   }
+
   getFromBasicSearchTwelveBooks() {
     this.checkFavorites();
     this.bookService.getBasicSearchTwelveBooks(this.basicSearchBooksTitle, this.startIndex).subscribe(
@@ -43,6 +52,7 @@ export class MaterialCardListComponent {
         console.log(data);
       });
   }
+
   getFromAdvancedSearchTwelveBooks() {
     this.checkFavorites();
     console.log(this.advancedSearchBooksValues);

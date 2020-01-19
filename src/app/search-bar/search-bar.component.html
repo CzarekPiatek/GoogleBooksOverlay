@@ -1,12 +1,14 @@
-<div class="search-form">
-    <button mdc-button outlined label="Wyszukiwanie podstawowe"  (click)="advancedSearch(false)" class="search-form__button" [mdcElevation]="3">
-      <mdc-icon>search</mdc-icon>
-    </button>
-    <button mdc-button outlined label="Wyszukiwanie zaawansowane" (click)="advancedSearch(true)" class="search-form__button" [mdcElevation]="3">
-      <mdc-icon>search</mdc-icon>
-    </button>
-    <div class="container">
-      <app-advanced-search (booksValues)="getAdvancedSearchBooksValues($event)" *ngIf="isAdvanced"></app-advanced-search>
-      <app-basic-search (booksTitle)="getBasicSearchTitle($event)" *ngIf="!isAdvanced"></app-basic-search>
-    </div>
+<div class="search-bar__buttons">
+  <button mdc-button outlined label="Wyszukiwanie podstawowe"  (click)="advancedSearch(false)" [mdcElevation]="3">
+    <mdc-icon>search</mdc-icon>
+  </button>
+  <button mdc-button outlined label="Wyszukiwanie zaawansowane" (click)="advancedSearch(true)" [mdcElevation]="3">
+    <mdc-icon>search</mdc-icon>
+  </button>
 </div>
+<div class="search-bar__search-inputs">
+  <app-advanced-search (booksValues)="getAdvancedSearchBooksValues($event)" *ngIf="isAdvanced"></app-advanced-search>
+  <app-basic-search (booksTitle)="getBasicSearchTitle($event)" *ngIf="!isAdvanced"></app-basic-search>
+</div>
+
+

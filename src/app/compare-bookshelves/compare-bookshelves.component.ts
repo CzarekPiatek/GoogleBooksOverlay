@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {BookshelfService} from "../service/bookshelf.service";
+import {Component, OnInit} from '@angular/core';
+import {BookshelfService} from '../service/bookshelf.service';
 
 @Component({
   selector: 'app-compare-bookshelves',
@@ -10,7 +10,10 @@ export class CompareBookshelvesComponent implements OnInit {
   allBookshelves;
   idOfLeftBookshelf;
   idOfRightBookshelf;
-  constructor(private bookshelfService: BookshelfService) { }
+
+  constructor(private bookshelfService: BookshelfService) {
+  }
+
   ngOnInit() {
     this.bookshelfService.getMyAllBookshelves().subscribe(
       data => {
@@ -23,6 +26,7 @@ export class CompareBookshelvesComponent implements OnInit {
   getLeftBookshelf($event) {
     this.idOfLeftBookshelf = +$event;
   }
+
   getRightBookshelf($event) {
     this.idOfRightBookshelf = +$event;
   }

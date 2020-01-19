@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {BookshelfService} from '../service/bookshelf.service';
 import {IBookshelf} from '../model/Bookshelf/ibookshelf';
-import {ActivatedRoute, Route, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-bookshelf-card-list',
@@ -13,13 +13,16 @@ export class BookshelfCardListComponent implements OnChanges, OnInit {
   myBookshelf: IBookshelf;
   bookshelfId: number;
   @Input() bookshelfIdFromCompare: number;
-  constructor(private bookshelfService: BookshelfService, private route: ActivatedRoute, public router: Router) { }
+
+  constructor(private bookshelfService: BookshelfService, private route: ActivatedRoute, public router: Router) {
+  }
 
   ngOnChanges() {
     console.log(this.bookshelfIdFromCompare);
     this.bookshelfId = this.bookshelfIdFromCompare;
     this.getBooksFromMyBookshelf(this.bookshelfIdFromCompare);
   }
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.bookshelfId = +params.get('bookshelfId');
@@ -36,9 +39,11 @@ export class BookshelfCardListComponent implements OnChanges, OnInit {
         this.myBookshelf = data;
       });
   }
+
   updateUrl($event) {
     this.src = 'https://material-components-web.appspot.com/images/1-1.jpg';
   }
+
   /*
   deleteBookFromBookshelf(bookId: string) {
     this.bookshelfService.removeBookFromBookshelf(this.bookshelfId, bookId);

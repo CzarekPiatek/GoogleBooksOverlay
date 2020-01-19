@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
-import {IBookshelf} from "../model/Bookshelf/ibookshelf";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {IBookshelfResponseModel} from "../model/Bookshelf/ibookshelf-response-model";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {IBookshelf} from '../model/Bookshelf/ibookshelf';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {IBookshelfResponseModel} from '../model/Bookshelf/ibookshelf-response-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookshelfService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public getAccessToken(): string {
     return sessionStorage.getItem('accessToken');
@@ -24,6 +25,7 @@ export class BookshelfService {
         return data.items;
       }));
   }
+
   public getMyBookshelfWithBookshelfId(bookshelfId: number): Observable<IBookshelf> {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' + bookshelfId
       + '?access_token=' + this.getAccessToken();
@@ -32,6 +34,7 @@ export class BookshelfService {
         return data;
       }));
   }
+
   public getBooksFromMyBookshelf(idBookshelf: number) {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' +
       idBookshelf + '/volumes?access_token='
@@ -41,6 +44,7 @@ export class BookshelfService {
         return data;
       }));
   }
+
   public getBooksIdsFromMyBookshelf(idBookshelf: number) {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' +
       idBookshelf + '/volumes?fields=items(id)&access_token='
@@ -50,6 +54,7 @@ export class BookshelfService {
         return data;
       }));
   }
+
   public removeBookFromBookshelf(bookshelfId: number, volumeId: string) {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' + bookshelfId
       + '/removeVolume?volumeId=' + volumeId + '&access_token=' + this.getAccessToken();
@@ -65,6 +70,7 @@ export class BookshelfService {
       },
     );
   }
+
   public addBookToBookshelf(bookshelfId: number, volumeId: string) {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' + bookshelfId
       + '/addVolume?volumeId=' + volumeId + '&access_token=' + this.getAccessToken();
@@ -74,11 +80,11 @@ export class BookshelfService {
       (val) => {
         console.log('POST call successful value returned in body',
           val);
-        },
+      },
       response => {
-          console.log('POST call in error', response);
-        },
-      );
+        console.log('POST call in error', response);
+      },
+    );
   }
 }
 

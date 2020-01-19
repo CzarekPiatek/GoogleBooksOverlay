@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../service/book.service';
-import {Location} from '@angular/common';
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
-import {BookLanguage} from "../model/enums/book-language.enum";
+import {BookLanguage} from '../model/enums/book-language.enum';
+import {BookSellAbility} from "../model/enums/book-sell-ability.enum";
 
 @Component({
   selector: 'app-single-book-details',
@@ -15,10 +13,13 @@ export class SingleBookDetailsComponent implements OnInit {
   bookId;
   book;
   authors;
-  lang: BookLanguage;
+  lang = BookLanguage;
+  saleAbility = BookSellAbility;
+
   constructor(private route: ActivatedRoute,
-              private bookService: BookService,
-              private location: Location) { }
+              private bookService: BookService) {
+  }
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.bookId = params.get('bookId');
@@ -27,8 +28,6 @@ export class SingleBookDetailsComponent implements OnInit {
       data => {
         this.book = data;
         this.authors = data.volumeInfo.authors;
-
-        //console.log(this.lang[data.volumeInfo.language.toString()]);
       });
   }
 }

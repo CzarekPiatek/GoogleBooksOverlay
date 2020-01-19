@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import { GoogleAuthService } from 'ng-gapi';
+import {GoogleAuthService} from 'ng-gapi';
 import * as _ from 'lodash';
 import GoogleUser = gapi.auth2.GoogleUser;
 import GoogleAuth = gapi.auth2.GoogleAuth;
@@ -25,6 +25,7 @@ export class UserService {
   public getCurrentUser(): GoogleUser {
     return this.user;
   }
+
   public getToken(): string {
     const token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
     if (!token) {
@@ -62,6 +63,7 @@ export class UserService {
       }, (err) => reject(err));
     });
   }
+
   public isUserSignedIn(): boolean {
     return !_.isEmpty(sessionStorage.getItem(UserService.SESSION_STORAGE_KEY));
   }

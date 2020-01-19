@@ -10,17 +10,21 @@ export class SearchBarComponent implements OnInit {
   title;
   @Output() basicSearchBooksTitle = new EventEmitter();
   @Output() advancedSearchBooksValues = new EventEmitter();
+
   constructor() {
   }
 
   ngOnInit() {
   }
+
   advancedSearch(isAdvanced: boolean) {
     this.isAdvanced = isAdvanced;
   }
+
   getAdvancedSearchBooksValues($event) {
     this.advancedSearchBooksValues.emit($event);
   }
+
   getBasicSearchTitle($event) {
     this.basicSearchBooksTitle.emit($event);
   }

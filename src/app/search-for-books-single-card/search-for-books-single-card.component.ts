@@ -1,17 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {BookshelfService} from "../service/bookshelf.service";
-
 @Component({
-  selector: 'app-material-card',
-  templateUrl: './material-card.component.html',
-  styleUrls: ['./material-card.component.scss']
+  selector: 'app-search-for-books-single-card',
+  templateUrl: './search-for-books-single-card.component.html',
+  styleUrls: ['./search-for-books-single-card.component.scss']
 })
-export class MaterialCardComponent implements OnInit {
+export class SearchForBooksSingleCardComponent implements OnInit {
   @Input() card;
   @Input() booksInFavoriteBookshelfIds;
   isFavorited = false;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     for (const ids of this.booksInFavoriteBookshelfIds.items) {
@@ -20,6 +20,7 @@ export class MaterialCardComponent implements OnInit {
       }
     }
   }
+
   toPreview(url: string) {
     window.location.href = url;
   }

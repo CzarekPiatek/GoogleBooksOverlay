@@ -7,9 +7,7 @@
       <div class="single-book-details-thumbnail" [mdcElevation]="3">
         <img *ngIf="book.volumeInfo.imageLinks" src='{{book.volumeInfo.imageLinks.thumbnail}}'>
         <img *ngIf="!book.volumeInfo.imageLinks" src="https://material-components-web.appspot.com/images/1-1.jpg">
-
       </div>
-
       <div class="single-book-details-headerbox-text">
         <div class="single-book-details-description" *ngIf="book.volumeInfo.description">
           <h2>Opis:</h2>
@@ -21,7 +19,7 @@
         </div>
       </div>
     </div>
-    <app-add-book-to-bookshelf-button [bookId]="bookId"></app-add-book-to-bookshelf-button>
+    <app-single-book-details-bookshelf-buttons [bookId]="bookId"></app-single-book-details-bookshelf-buttons>
     <div class="single-book-details-table" [mdcElevation]="3">
       <mdc-data-table>
         <table mdcDataTableTable>
@@ -44,7 +42,7 @@
           </tr>
           <tr mdcDataTableRow *ngIf="book.volumeInfo.language">
             <td mdcDataTableCell>Język książki:</td>
-            <td mdcDataTableCell>{{book.volumeInfo.language}}</td>
+            <td mdcDataTableCell>{{lang[book.volumeInfo.language]}}</td>
           </tr>
           <tr mdcDataTableRow *ngIf="book.saleInfo.isEbook">
             <td mdcDataTableCell>Czy to E-book?:</td>
@@ -52,7 +50,7 @@
           </tr>
           <tr mdcDataTableRow *ngIf="book.saleInfo.saleability">
             <td mdcDataTableCell>Czy jest na sprzedaż:</td>
-            <td mdcDataTableCell>{{book.saleInfo.saleability}}</td>
+            <td mdcDataTableCell>{{saleAbility[book.saleInfo.saleability]}}</td>
           </tr>
           <tr mdcDataTableRow *ngIf="book.saleInfo.retailPrice">
             <td mdcDataTableCell>Cena detaliczna:</td>

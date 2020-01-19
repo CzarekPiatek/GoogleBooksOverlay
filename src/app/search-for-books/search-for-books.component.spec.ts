@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialCardListComponent } from './material-card-list.component';
+import { SearchForBooksComponent } from './search-for-books.component';
 
 describe('MaterialCardListComponent', () => {
-  let component: MaterialCardListComponent;
-  let fixture: ComponentFixture<MaterialCardListComponent>;
+  let component: SearchForBooksComponent;
+  let fixture: ComponentFixture<SearchForBooksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaterialCardListComponent ]
+      declarations: [ SearchForBooksComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaterialCardListComponent);
+    fixture = TestBed.createComponent(SearchForBooksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

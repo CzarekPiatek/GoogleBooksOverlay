@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BookshelfService} from '../service/bookshelf.service';
 import {MdcDialog, MdcSnackbar} from '@angular-mdc/web';
-import {MaterialDialogSimpleComponent} from '../material-dialog-simple/material-dialog-simple.component';
+import {SingleBookDetailsBookshelfDialogComponent} from '../single-book-details-bookshelf-dialog/single-book-details-bookshelf-dialog.component';
 
 import {forkJoin} from 'rxjs';
 import {IBookResponseModel} from '../model/Book/ibook-response-model';
@@ -9,31 +9,35 @@ import {IBookshelf} from '../model/Bookshelf/ibookshelf';
 
 
 @Component({
-  selector: 'app-add-book-to-bookshelf-button',
-  templateUrl: './add-book-to-bookshelf-button.component.html',
-  styleUrls: ['./add-book-to-bookshelf-button.component.scss']
+  selector: 'app-single-book-details-bookshelf-buttons',
+  templateUrl: './single-book-details-bookshelf-buttons.component.html',
+  styleUrls: ['./single-book-details-bookshelf-buttons.component.scss']
 })
 
-export class AddBookToBookshelfButtonComponent implements OnInit {
+export class SingleBookDetailsBookshelfButtonsComponent implements OnInit {
   allBookshelvesWithBooks = [];
   booleanTableToCheckIfBookIsInBookshelf = [];
   @Input() bookId;
   allBookshelves: IBookshelf[] = [];
+
   constructor(private bookshelfService: BookshelfService,
               public dialog: MdcDialog,
-              private snackbar: MdcSnackbar) { }
+              private snackbar: MdcSnackbar) {
+  }
 
   ngOnInit() {
     this.getAllBookshelvesWithBooks();
   }
+
   openSnackbar(message: string) {
     const snackbarRef = this.snackbar.open(message);
     snackbarRef.afterDismiss().subscribe(reason => {
       console.log(reason);
     });
   }
+
   add() {
-    const dialogRef = this.dialog.open(MaterialDialogSimpleComponent,
+    const dialogRef = this.dialog.open(SingleBookDetailsBookshelfDialogComponent,
       {
         clickOutsideToClose: true,
         escapeToClose: true,
@@ -42,7 +46,7 @@ export class AddBookToBookshelfButtonComponent implements OnInit {
           title: 'Dodaj do półki',
           addFunction: true,
         }
-        });
+      });
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'close') {
         console.log('Zamknięto');
@@ -53,8 +57,9 @@ export class AddBookToBookshelfButtonComponent implements OnInit {
       }
     });
   }
+
   delete() {
-    const dialogRef = this.dialog.open(MaterialDialogSimpleComponent,
+    const dialogRef = this.dialog.open(SingleBookDetailsBookshelfDialogComponent,
       {
         clickOutsideToClose: true,
         escapeToClose: true,
@@ -74,6 +79,7 @@ export class AddBookToBookshelfButtonComponent implements OnInit {
       }
     });
   }
+
   getAllBookshelvesWithBooks() {
     this.allBookshelvesWithBooks = [];
     forkJoin(
@@ -81,7 +87,7 @@ export class AddBookToBookshelfButtonComponent implements OnInit {
     ).subscribe((data) => {
       this.allBookshelves = data[0];
       this.allBookshelves.forEach((bookshelf: IBookshelf) => {
-        if (bookshelf.id !== 8 && bookshelf.id !== 9 && bookshelf.id !== 6 && bookshelf.id  !== 1 && bookshelf.id !== 5) {
+        if (bookshelf.id !== 8 && bookshelf.id !== 9 && bookshelf.id !== 6 && bookshelf.id !== 1 && bookshelf.id !== 5) {
           this.bookshelfService.getBooksFromMyBookshelf(bookshelf.id)
             .subscribe((d: IBookResponseModel) => {
               if (d.items !== undefined) {
@@ -96,13 +102,13 @@ export class AddBookToBookshelfButtonComponent implements OnInit {
                 this.booleanTableToCheckIfBookIsInBookshelf[bookshelf.id] = false;
               }
               this.allBookshelvesWithBooks.push({
-                  bookshelfTitle: bookshelf.title,
-                  bookshelfId: bookshelf.id,
-                  books: d.items,
-                  isInBookshelf: this.booleanTableToCheckIfBookIsInBookshelf[bookshelf.id]
-                });
+                bookshelfTitle: bookshelf.title,
+                bookshelfId: bookshelf.id,
+                books: d.items,
+                isInBookshelf: this.booleanTableToCheckIfBookIsInBookshelf[bookshelf.id]
+              });
               console.log(this.allBookshelvesWithBooks);
-          });
+            });
         }
       });
     });

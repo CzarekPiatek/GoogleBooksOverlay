@@ -1,8 +1,12 @@
 <mdc-list-group *ngIf="myBookshelf">
   <mdc-list twoLine avatar class="demo-list--custom">
     <mdc-list-item *ngFor="let book of myBookshelf.items" (click)="navigateToBook(book.id)">
-      <mdc-icon mdcListItemGraphic><img [src]="book.volumeInfo.imageLinks.thumbnail" (error)="updateUrl($event)"></mdc-icon>
-      <mdc-list-item-text [secondaryText]="book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'Nie podano'">{{book.volumeInfo.title}}</mdc-list-item-text>
+      <mdc-icon mdcListItemGraphic>
+        <img
+          [src]="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://material-components-web.appspot.com/images/1-1.jpg'">
+      </mdc-icon>
+      <mdc-list-item-text
+        [secondaryText]="book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'Nie podano'">{{book.volumeInfo.title}}</mdc-list-item-text>
     </mdc-list-item>
   </mdc-list>
 </mdc-list-group>

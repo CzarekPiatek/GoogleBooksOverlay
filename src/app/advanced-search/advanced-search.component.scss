@@ -104,7 +104,9 @@ $mat-stepper-line-gap: 8px !default;
     }
   }
 }
-
+.mat-form-field {
+  margin: 15px;
+}
 .mat-vertical-stepper-header {
   display: flex;
   align-items: center;

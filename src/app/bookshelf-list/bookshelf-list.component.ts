@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {BookshelfService} from "../service/bookshelf.service";
-import {MdcList} from "@angular-mdc/web";
+import {Component, OnInit} from '@angular/core';
+import {BookshelfService} from '../service/bookshelf.service';
 
 @Component({
   selector: 'app-bookshelf-list',
@@ -9,13 +8,16 @@ import {MdcList} from "@angular-mdc/web";
 })
 export class BookshelfListComponent implements OnInit {
   myBookshelf;
-  constructor(private bookshelfService: BookshelfService) { }
+
+  constructor(private bookshelfService: BookshelfService) {
+  }
+
   ngOnInit() {
     this.bookshelfService.getMyAllBookshelves().subscribe(
       data => {
-          this.myBookshelf = data;
-          console.log(data);
-        }
-      );
+        this.myBookshelf = data;
+        console.log(data);
+      }
+    );
   }
 }

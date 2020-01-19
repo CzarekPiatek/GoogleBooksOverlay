@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
-import {BookshelfService} from "../service/bookshelf.service";
 
 @Component({
   selector: 'app-material-navbar',
@@ -10,13 +9,13 @@ import {BookshelfService} from "../service/bookshelf.service";
 })
 export class MaterialNavbarComponent implements OnInit {
   destinations = [
-    {label: 'Szukaj książek', icon: 'search', activated: true, route: 'material-card-list'},
-    {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'},
+    {label: 'Szukaj książek', icon: 'search', activated: true, route: 'search-for-books'},
     {label: 'Porównaj półki', icon: 'folder', activated: false, route: 'compare-bookshelves'},
-    {label: 'Wyloguj', icon: 'drafts', activated: false, route: 'home-page'}
+    {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'}
   ];
   username;
   email;
+
   constructor(private userService: UserService, private router: Router) {
   }
 
@@ -39,6 +38,7 @@ export class MaterialNavbarComponent implements OnInit {
       this.router.navigate(['home-page']);
     }
   }
+
   public logOut() {
     this.userService.signOut();
     this.router.navigate(['home-page']);

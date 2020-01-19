@@ -7,7 +7,6 @@ import {BookFilter} from '../model/enums/book-filter.enum';
 import {BookMaxAllowedMaturityRating} from '../model/enums/book-max-allowed-maturity-rating.enum';
 import {BookPrintType} from '../model/enums/book-print-type.enum';
 import {BookProjection} from '../model/enums/book-projection.enum';
-import {BookSellAbility} from '../model/enums/book-sell-ability.enum';
 
 @Component({
   selector: 'app-advanced-search',
@@ -28,7 +27,8 @@ export class AdvancedSearchComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -43,6 +43,7 @@ export class AdvancedSearchComponent implements OnInit {
       projection: ['', Validators.required],
     });
   }
+
   send() {
     this.booksValues.emit({
       firstFormGroup: this.firstFormGroup.value,

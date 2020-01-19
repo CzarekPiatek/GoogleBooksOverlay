@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -10,14 +10,16 @@ import {IBookModel} from "../model/Book/ibook-model";
 })
 export class BookService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   searchBooks(title: string) {
     const encodedURI = encodeURI('https://www.googleapis.com/books/v1/volumes?q=' + title + '&maxResults=12');
     return this.http.get(encodedURI)
       .pipe(map((res: Response) => {
           // @ts-ignore
-          return res.items || {}; }),
+          return res.items || {};
+        }),
         catchError(error => throwError('Its a Trap in searchBooks function!'))
       );
   }
@@ -50,8 +52,8 @@ export class BookService {
       + title + '&filter=' + filter + '&langRestrict=' + langRestrict + '&maxAllowedMaturityRating=' +
       maxAllowedMaturityRating + '&orderBy=' + orderBy + '&printType=' + printType + '&projection=' +
       projection + '&startIndex=' + start + '&maxResults=12').pipe(
-        map((data) => {
-      return data;
-    }));
+      map((data) => {
+        return data;
+      }));
   }
 }

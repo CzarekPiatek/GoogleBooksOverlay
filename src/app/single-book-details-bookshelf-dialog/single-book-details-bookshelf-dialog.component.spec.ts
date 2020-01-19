@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialDialogSimpleComponent } from './material-dialog-simple.component';
+import { SingleBookDetailsBookshelfDialogComponent } from './single-book-details-bookshelf-dialog.component';
 
 describe('MaterialDialogSimpleComponent', () => {
-  let component: MaterialDialogSimpleComponent;
-  let fixture: ComponentFixture<MaterialDialogSimpleComponent>;
+  let component: SingleBookDetailsBookshelfDialogComponent;
+  let fixture: ComponentFixture<SingleBookDetailsBookshelfDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaterialDialogSimpleComponent ]
+      declarations: [ SingleBookDetailsBookshelfDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaterialDialogSimpleComponent);
+    fixture = TestBed.createComponent(SingleBookDetailsBookshelfDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
