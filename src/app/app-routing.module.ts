@@ -9,6 +9,7 @@ import {BookshelfListComponent} from './bookshelf-list/bookshelf-list.component'
 import {BookshelfCardListComponent} from "./bookshelf-card-list/bookshelf-card-list.component";
 import {AdvancedSearchComponent} from "./advanced-search/advanced-search.component";
 import {CompareBookshelvesComponent} from "./compare-bookshelves/compare-bookshelves.component";
+import {CsvComponent} from "./csv/csv.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'single-book-details/:bookId', component: SingleBookDetailsComponent, canActivate: [AuthGuard]},
   { path: 'advanced-search', component: AdvancedSearchComponent, canActivate: [AuthGuard]},
   { path: 'compare-bookshelves', component: CompareBookshelvesComponent, canActivate: [AuthGuard]},
+  { path: 'csv', component: CsvComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

@@ -9,9 +9,11 @@ import {Router} from '@angular/router';
 })
 export class MaterialNavbarComponent implements OnInit {
   destinations = [
-    {label: 'Szukaj książek', icon: 'search', activated: true, route: 'search-for-books'},
+    {label: 'Strona Główna', icon: 'home', activated: true, route: 'home-page'},
+    {label: 'Szukaj książek', icon: 'search', activated: false, route: 'search-for-books'},
     {label: 'Porównaj półki', icon: 'folder', activated: false, route: 'compare-bookshelves'},
-    {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'}
+    {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'},
+    {label: 'Importuj/Eksportuj CSV', icon: 'import_export', activated: false, route: 'csv'},
   ];
   username;
   email;

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CsvModule } from '@ctrl/ngx-csv';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {GoogleApiModule, NG_GAPI_CONFIG, NgGapiClientConfig} from 'ng-gapi';
@@ -38,6 +38,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { CompareBookshelvesComponent } from './compare-bookshelves/compare-bookshelves.component';
 import { CompareBookshelvesSelectFieldComponent } from './compare-bookshelves-select-field/compare-bookshelves-select-field.component';
 import { CompareBookshelvesTableComponent } from './compare-bookshelves-table/compare-bookshelves-table.component';
+import { CsvExportComponent } from './csv-export/csv-export.component';
+import { CsvImportComponent } from './csv-import/csv-import.component';
+import { CsvComponent } from './csv/csv.component';
 
 
 
@@ -71,6 +74,9 @@ const gapiClientConfig: NgGapiClientConfig = {
     CompareBookshelvesComponent,
     CompareBookshelvesSelectFieldComponent,
     CompareBookshelvesTableComponent,
+    CsvExportComponent,
+    CsvImportComponent,
+    CsvComponent,
   ],
   entryComponents: [
     SingleBookDetailsBookshelfDialogComponent,
@@ -91,6 +97,7 @@ const gapiClientConfig: NgGapiClientConfig = {
     MdcIconButtonModule,
     HttpClientModule,
     MdcSnackbarModule,
+    CsvModule,
     MdcTypographyModule,
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,

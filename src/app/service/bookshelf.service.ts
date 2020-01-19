@@ -70,7 +70,21 @@ export class BookshelfService {
       },
     );
   }
-
+  public removeEverythingFromBookshelf(bookshelfId: number) {
+    const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' + bookshelfId
+      + '/clearVolumes?access_token=' + this.getAccessToken();
+    return this.http.post<any>(url, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }).subscribe(
+      (val) => {
+        console.log('POST call successful value returned in body',
+          val);
+      },
+      response => {
+        console.log('POST call in error', response);
+      },
+    );
+  }
   public addBookToBookshelf(bookshelfId: number, volumeId: string) {
     const url = 'https://www.googleapis.com/books/v1/mylibrary/bookshelves/' + bookshelfId
       + '/addVolume?volumeId=' + volumeId + '&access_token=' + this.getAccessToken();

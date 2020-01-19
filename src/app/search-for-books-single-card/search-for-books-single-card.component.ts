@@ -14,9 +14,11 @@ export class SearchForBooksSingleCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (const ids of this.booksInFavoriteBookshelfIds.items) {
-      if (this.card.id === ids.id) {
-        this.isFavorited = true;
+    if (this.booksInFavoriteBookshelfIds.items) {
+      for (const ids of this.booksInFavoriteBookshelfIds.items) {
+        if (this.card.id === ids.id) {
+          this.isFavorited = true;
+        }
       }
     }
   }

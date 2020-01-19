@@ -1,0 +1,23 @@
+<div class="csv__container">
+  <div class="csv__title">
+    <h2>Import / Eksport CSV</h2>
+  </div>
+  <form [formGroup]="formGroup" class="csv" >
+    <mat-form-field>
+      <mat-label>Wybierz półkę</mat-label>
+      <mat-select matNativeControl formControlName="idOfBookshelf" (change)="getItemsFromBookshelf()">
+        <mat-option *ngFor="let allBookshelves of allBookshelves" [value]="allBookshelves.id">
+          {{allBookshelves.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mdcIconButton (click)="showOptions()">
+      <mdc-icon>search</mdc-icon>
+    </button>
+  </form>
+  <a *ngIf="allBookshelves" csvLink [data]="allBookshelves">Wyeksportuj wszystkie bookshelfy</a>
+  <a *ngIf="booksFromBookshelf && booksFromBookshelf.items" csvLink [data]="booksFromBookshelf.items">Wyeksportuj wszystkie książki</a>
+  <a *ngIf="booksFromBookshelf && booksFromBookshelf.items && booleanForUnwantedBookshelves" (click)="deleteEverythingFromBookshelf(idOfBookshelf)">Usuń wszystkie książki</a>
+  <input type="file" *ngIf="booleanForUnwantedBookshelves" (click)="importCSV(idOfBookshelf)">Importuj książki do Bookshelfu
+</div>
+
