@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" class="compare-bookshelves__form">
+  <mat-form-field>
+    <mat-label>Wybierz półkę</mat-label>
+    <mat-select matNativeControl formControlName="idOfBookshelf">
+      <mat-option *ngFor="let allBookshelves of allBookshelves" [value]="allBookshelves.id">
+        {{allBookshelves.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mdcIconButton (click)="search()">
+    <mdc-icon>search</mdc-icon>
+  </button>
+</form>

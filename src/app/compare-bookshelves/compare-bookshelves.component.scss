@@ -1,0 +1,16 @@
+.compare-bookshelves__container {
+  justify-content: center;
+}
+.compare-bookshelves__two-tables {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.compare-bookshelves__title {
+  text-align: center;
+}
+.compare-bookshelves__left,
+.compare-bookshelves__right {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+}

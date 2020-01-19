@@ -8,6 +8,7 @@ import {MaterialCardComponent} from './material-card/material-card.component';
 import {BookshelfListComponent} from './bookshelf-list/bookshelf-list.component';
 import {BookshelfCardListComponent} from "./bookshelf-card-list/bookshelf-card-list.component";
 import {AdvancedSearchComponent} from "./advanced-search/advanced-search.component";
+import {CompareBookshelvesComponent} from "./compare-bookshelves/compare-bookshelves.component";
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'bookshelf-list', component: BookshelfListComponent, canActivate: [AuthGuard]},
   { path: 'bookshelf-card-list/:bookshelfId', component: BookshelfCardListComponent, canActivate: [AuthGuard]},
   { path: 'single-book-details/:bookId', component: SingleBookDetailsComponent, canActivate: [AuthGuard]},
-  { path: 'advanced-search', component: AdvancedSearchComponent}
+  { path: 'advanced-search', component: AdvancedSearchComponent},
+  { path: 'compare-bookshelves', component: CompareBookshelvesComponent },
 ];
 
 @NgModule({

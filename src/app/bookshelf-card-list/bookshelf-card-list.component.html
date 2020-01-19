@@ -3,9 +3,6 @@
     <mdc-list-item *ngFor="let book of myBookshelf.items" (click)="navigateToBook(book.id)">
       <mdc-icon mdcListItemGraphic><img [src]="book.volumeInfo.imageLinks.thumbnail" (error)="updateUrl($event)"></mdc-icon>
       <mdc-list-item-text [secondaryText]="book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'Nie podano'">{{book.volumeInfo.title}}</mdc-list-item-text>
-      <button (click)="deleteBookFromBookshelf(book.id)" mdcListItemMeta mdcIconButton
-              aria-label="Usun książkę z bookshelfu" title="Usun książkę z bookshelfu">
-        <mdc-icon>delete</mdc-icon></button>
     </mdc-list-item>
   </mdc-list>
 </mdc-list-group>

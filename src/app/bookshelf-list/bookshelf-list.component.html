@@ -1,6 +1,6 @@
 <mdc-list-group subheader="Twoje półki na książki">
   <mdc-list twoLine avatar class="demo-list--custom">
-    <mdc-list-item [hidden]="bookshelf.volumeCount===0" [routerLink]="['/bookshelf-card-list', bookshelf.id]" *ngFor="let bookshelf of myBookshelf; let i = index">
+    <mdc-list-item [hidden]="bookshelf.volumeCount===0 || bookshelf.volumeCount === undefined" [routerLink]="['/bookshelf-card-list', bookshelf.id]" *ngFor="let bookshelf of myBookshelf; let i = index">
       <mdc-icon mdcListItemGraphic>folder</mdc-icon>
       <mdc-list-item-text [secondaryText]="'Ilość książek: '+ bookshelf.volumeCount">{{bookshelf.title}}</mdc-list-item-text>
       <app-bookshelf-card-list *ngIf="arrayIndex == i"></app-bookshelf-card-list>

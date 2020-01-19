@@ -1,13 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {BookLanguage} from '../model/book-language.enum';
-import {BookOrder} from '../model/book-order.enum';
-import {BookFilter} from '../model/book-filter.enum';
-import {BookMaxAllowedMaturityRating} from '../model/book-max-allowed-maturity-rating.enum';
-import {BookPrintType} from '../model/book-print-type.enum';
-import {BookProjection} from '../model/book-projection.enum';
-import {BookSellAbility} from '../model/book-sell-ability.enum';
+import {BookLanguage} from '../model/enums/book-language.enum';
+import {BookOrder} from '../model/enums/book-order.enum';
+import {BookFilter} from '../model/enums/book-filter.enum';
+import {BookMaxAllowedMaturityRating} from '../model/enums/book-max-allowed-maturity-rating.enum';
+import {BookPrintType} from '../model/enums/book-print-type.enum';
+import {BookProjection} from '../model/enums/book-projection.enum';
+import {BookSellAbility} from '../model/enums/book-sell-ability.enum';
 
 @Component({
   selector: 'app-advanced-search',

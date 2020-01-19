@@ -1,0 +1,34 @@
+<div [mdcElevation]="3">
+  <mdc-data-table *ngIf="bookshelfInfo" class="compare-bookshelves__table">
+    <table mdcDataTableTable>
+      <tbody mdcDataTableContent>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Nazwa półki:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.title}}</td>
+      </tr>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Identyfikator półki:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.id}}</td>
+      </tr>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Ilość książek na półce:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.volumeCount}}</td>
+      </tr>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Dostęp do półki:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.access}}</td>
+      </tr>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Kiedy utworzono:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.created}}</td>
+      </tr>
+      <tr mdcDataTableRow>
+        <td mdcDataTableCell>Kiedy ostatnia zmiana:</td>
+        <td mdcDataTableCell>{{bookshelfInfo.updated}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </mdc-data-table>
+  <app-bookshelf-card-list *ngIf="bookshelfId !== 9" [bookshelfIdFromCompare]="bookshelfId"></app-bookshelf-card-list>
+
+</div>

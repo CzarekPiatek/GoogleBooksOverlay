@@ -12,6 +12,7 @@ export class MaterialNavbarComponent implements OnInit {
   destinations = [
     {label: 'Szukaj książek', icon: 'search', activated: true, route: 'material-card-list'},
     {label: 'Twoje książki', icon: 'star', activated: false, route: 'bookshelf-list'},
+    {label: 'Porównaj półki', icon: 'folder', activated: false, route: 'compare-bookshelves'},
     {label: 'Wyloguj', icon: 'drafts', activated: false, route: 'home-page'}
   ];
   username;

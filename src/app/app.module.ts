@@ -35,6 +35,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import { BasicSearchComponent } from './basic-search/basic-search.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { CompareBookshelvesComponent } from './compare-bookshelves/compare-bookshelves.component';
+import { CompareBookshelvesSelectFieldComponent } from './compare-bookshelves-select-field/compare-bookshelves-select-field.component';
+import { CompareBookshelvesTableComponent } from './compare-bookshelves-table/compare-bookshelves-table.component';
 
 
 
@@ -65,6 +68,9 @@ const gapiClientConfig: NgGapiClientConfig = {
     MaterialDialogSimpleComponent,
     AdvancedSearchComponent,
     BasicSearchComponent,
+    CompareBookshelvesComponent,
+    CompareBookshelvesSelectFieldComponent,
+    CompareBookshelvesTableComponent,
   ],
   entryComponents: [
     MaterialDialogSimpleComponent,

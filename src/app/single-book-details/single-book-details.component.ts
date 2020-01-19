@@ -4,7 +4,7 @@ import {BookService} from '../service/book.service';
 import {Location} from '@angular/common';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {BookLanguage} from "../model/book-language.enum";
+import {BookLanguage} from "../model/enums/book-language.enum";
 
 @Component({
   selector: 'app-single-book-details',

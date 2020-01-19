@@ -1,0 +1,15 @@
+<div class="compare-bookshelves__container">
+  <div class="compare-bookshelves__title">
+    <h2>Porównaj swoje półki</h2>
+  </div>
+  <div class="compare-bookshelves__two-tables">
+    <div class="compare-bookshelves__left">
+      <app-compare-bookshelves-select-field [allBookshelves]="allBookshelves" (idOfBookshelf)="getLeftBookshelf($event)"></app-compare-bookshelves-select-field>
+      <app-compare-bookshelves-table *ngIf="idOfLeftBookshelf !== undefined" [bookshelfId]="idOfLeftBookshelf"></app-compare-bookshelves-table>
+    </div>
+    <div class="compare-bookshelves__right">
+      <app-compare-bookshelves-select-field [allBookshelves]="allBookshelves" (idOfBookshelf)="getRightBookshelf($event)"></app-compare-bookshelves-select-field>
+      <app-compare-bookshelves-table *ngIf="idOfRightBookshelf !== undefined" [bookshelfId]="idOfRightBookshelf"></app-compare-bookshelves-table>
+    </div>
+  </div>
+</div>
