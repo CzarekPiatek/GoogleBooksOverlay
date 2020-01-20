@@ -1,5 +1,5 @@
 <mdc-list-group subheader="Twoje półki na książki">
-  <mdc-list twoLine avatar class="demo-list--custom">
+  <mdc-list twoLine avatar class="bookshelf-list__list">
     <mdc-list-item [hidden]="bookshelf.volumeCount===0 || bookshelf.volumeCount === undefined"
                    [routerLink]="['/bookshelf-card-list', bookshelf.id]"
                    *ngFor="let bookshelf of myBookshelf; let i = index">

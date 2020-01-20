@@ -27,22 +27,18 @@ import { SingleBookDetailsBookshelfButtonsComponent } from './single-book-detail
 import { SingleBookDetailsBookshelfDialogComponent } from './single-book-details-bookshelf-dialog/single-book-details-bookshelf-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
-import {MatStepperModule} from "@angular/material/stepper";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSelectModule} from "@angular/material/select";
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 import { BasicSearchComponent } from './basic-search/basic-search.component';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CompareBookshelvesComponent } from './compare-bookshelves/compare-bookshelves.component';
 import { CompareBookshelvesSelectFieldComponent } from './compare-bookshelves-select-field/compare-bookshelves-select-field.component';
 import { CompareBookshelvesTableComponent } from './compare-bookshelves-table/compare-bookshelves-table.component';
-import { CsvExportComponent } from './csv-export/csv-export.component';
-import { CsvImportComponent } from './csv-import/csv-import.component';
 import { CsvComponent } from './csv/csv.component';
-
-
 
 
 const gapiClientConfig: NgGapiClientConfig = {
@@ -74,8 +70,6 @@ const gapiClientConfig: NgGapiClientConfig = {
     CompareBookshelvesComponent,
     CompareBookshelvesSelectFieldComponent,
     CompareBookshelvesTableComponent,
-    CsvExportComponent,
-    CsvImportComponent,
     CsvComponent,
   ],
   entryComponents: [

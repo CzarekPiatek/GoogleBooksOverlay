@@ -8,3 +8,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 [hidden] {
   display: none !important;
 }
+@mixin container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+@mixin list {
+  @include mdc-list-item-graphic-ink-color(white);
+  @include mdc-list-item-graphic-fill-color(text-icon-on-background);
+  @include mdc-list-divider-color($material-color-purple-50);
+  @include mdc-list-item-primary-text-ink-color($material-color-blue-600);
+  @include mdc-list-item-secondary-text-ink-color($material-color-purple-600);
+  @include mdc-list-item-graphic-fill-color($material-color-purple-400);
+  @include mdc-list-item-graphic-ink-color($material-color-purple-50);
+  @include mdc-list-item-meta-ink-color($material-color-red-500);
+}

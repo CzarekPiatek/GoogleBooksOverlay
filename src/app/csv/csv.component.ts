@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookshelfService} from '../service/bookshelf.service';
 import {BookService} from '../service/book.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,10 +17,12 @@ export class CsvComponent implements OnInit {
   booksFromBookshelf;
   idOfBookshelf;
   booleanForUnwantedBookshelves = false;
+  csvData;
+
   constructor(private bookshelfService: BookshelfService,
               private bookService: BookService,
-              private formBuilder: FormBuilder,
-              private papa: Papa) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.getAllBookshelves();
@@ -28,34 +30,38 @@ export class CsvComponent implements OnInit {
       idOfBookshelf: ['', Validators.required],
     });
   }
+
   showOptions() {
     this.checkBookshelfValue();
     this.getItemsFromBookshelf();
-    if (this.idOfBookshelf !== '' && this.idOfBookshelf !== 9 && this.idOfBookshelf !== 1
-      && this.idOfBookshelf !== 5 && this.idOfBookshelf !== 7 && this.idOfBookshelf !== 8) {
-      this.booleanForUnwantedBookshelves = true;
-    } else {
-      this.booleanForUnwantedBookshelves = false;
-    }
+    this.booleanForUnwantedBookshelves = this.idOfBookshelf !== '' && this.idOfBookshelf !== 9 && this.idOfBookshelf !== 1
+      && this.idOfBookshelf !== 5 && this.idOfBookshelf !== 7 && this.idOfBookshelf !== 8;
   }
+
   checkBookshelfValue() {
     this.idOfBookshelf = this.formGroup.value.idOfBookshelf;
   }
-  importCSV(bookshelfId: number) {
-    const csvData = '"Hello","World!"';
-    const options = {
-      complete: (results, file) => {
-        console.log('Parsed: ', results, file);
-      }
-      // Add your options here
-    };
 
-    this.papa.parse(csvData, options);
+  public fileChangeListener(files: FileList) {
+    if (files && files.length > 0) {
+      const file: File = files.item(0);
+      const reader: FileReader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        const csv: string = reader.result as string;
+        this.csvData = csv.trim()
+          .replace(/(\r\n|\n|\r)/gm, '')
+          .replace('"id"', '')
+          .slice(1, -1).split('""');
+        console.log(this.csvData);
+      };
+    }
   }
 
   deleteEverythingFromBookshelf(bookshelfId: number) {
     this.bookshelfService.removeEverythingFromBookshelf(bookshelfId);
   }
+
   getAllBookshelves() {
     this.bookshelfService.getMyAllBookshelves().subscribe(
       data => {
@@ -64,6 +70,7 @@ export class CsvComponent implements OnInit {
       }
     );
   }
+
   getItemsFromBookshelf() {
     if (this.idOfBookshelf !== '' && this.idOfBookshelf !== 9) {
       this.bookshelfService.getBooksIdsFromMyBookshelf(this.idOfBookshelf).subscribe(
@@ -73,5 +80,11 @@ export class CsvComponent implements OnInit {
         }
       );
     }
+  }
+
+  importBooksToBookshelf() {
+    this.csvData.forEach((id) => {
+      this.bookshelfService.addBookToBookshelf(this.idOfBookshelf, id);
+    });
   }
 }

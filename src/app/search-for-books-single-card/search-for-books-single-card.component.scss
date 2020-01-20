@@ -19,7 +19,7 @@
   width: 150px;
   border-top-left-radius: inherit;
 }
-.material-card--book {
+.material-card__book {
   @include mdc-card-shape-radius(24px 4px);
 
   @include mdc-rtl {
